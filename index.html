@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#2f6f5e"><link rel="apple-touch-icon" href="/icon-192.png"><title>인강 진도 트래커</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#2f6f5e"><link rel="apple-touch-icon" href="/icon-192.png"><title>인강 진도 트래커</title>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#f6f5f1;--card:#fff;--tx:#1d1d1b;--mut:#6b6a64;--line:#e4e2da;--ac:#2f6f5e;--ac-soft:#e0efe9;--ac-tx:#fff;--warn:#b5532a;--field:#faf9f6}
@@ -48,6 +48,14 @@ select{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px sol
 .ddi>div{flex:1;min-width:0;font-size:.9rem;word-break:break-word}
 .ddi span{color:var(--mut);font-size:.8rem}
 .ddi button{min-height:34px;padding:4px 10px;font-size:.8rem}
+.tabs{display:flex;gap:6px;margin:0 0 12px}
+.pager{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px 0 0}
+.pager:empty{display:none}
+.pager span{color:var(--mut);font-size:.9rem}
+.pager button:disabled{opacity:.4;cursor:default}
+.tabs:empty{display:none}
+.tab{padding:8px 16px;border-radius:10px;font-weight:600}
+.tab.on{background:var(--ac);color:var(--ac-tx);border-color:var(--ac)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
 .chip{padding:5px 12px;min-height:34px;border-radius:99px;font-size:.85rem}
 .chip.on{background:var(--ac);color:var(--ac-tx);border-color:var(--ac);font-weight:600}
@@ -101,6 +109,41 @@ input{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px soli
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .foot{display:flex;gap:8px;justify-content:space-between;margin-top:18px}
 .foot div{display:flex;gap:8px}
+/* ===== Look & feel v2 ===== */
+:root{--bg:#f4f0e6;--card:#fffdf9;--tx:#26332d;--mut:#76817a;--line:#e8e1d2;--ac:#2d7a5e;--ac-soft:#e0f1e7;--ac-tx:#fff;--warn:#c4552b;--field:#f8f4ea;--amber:#c9821d;--amber-soft:#fbefd5;--sh:0 1px 2px rgba(70,55,30,.06),0 10px 28px -14px rgba(70,55,30,.25)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131715;--card:#1c2320;--tx:#e8efe9;--mut:#8d9a92;--line:#2c3631;--ac:#6cc7a3;--ac-soft:#22362d;--ac-tx:#0c1f17;--warn:#ec946a;--field:#171d1a;--amber:#e8b25a;--amber-soft:#3a3020;--sh:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6)}}
+:root[data-theme="dark"]{--bg:#131715;--card:#1c2320;--tx:#e8efe9;--mut:#8d9a92;--line:#2c3631;--ac:#6cc7a3;--ac-soft:#22362d;--ac-tx:#0c1f17;--warn:#ec946a;--field:#171d1a;--amber:#e8b25a;--amber-soft:#3a3020;--sh:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6)}
+body{font-family:"Gowun Dodum","Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;font-size:15px;background:radial-gradient(1100px 480px at 90% -8%,var(--ac-soft),transparent 62%) fixed,var(--bg)}
+.wrap{padding:24px 16px 96px}
+.wrap>.sub{display:none}
+h1{font-size:1.6rem;letter-spacing:-.02em}
+button{border-radius:12px;transition:transform .12s,box-shadow .15s,border-color .15s,background .15s}
+button:active{transform:scale(.97)}
+button:focus-visible,input:focus,textarea:focus,select:focus{outline:2px solid var(--ac);outline-offset:1px}
+button.pri{box-shadow:0 6px 14px -6px var(--ac)}
+.badge{font-weight:600}
+.qt{position:relative;border-left:0;border-radius:20px;box-shadow:var(--sh);background:linear-gradient(120deg,var(--card),var(--ac-soft));padding:8px 8px 8px 46px;margin-bottom:14px}
+.qt::before{content:"\201C";position:absolute;left:16px;top:4px;font:700 2.8rem/1.2 Georgia,serif;color:var(--ac);opacity:.45}
+.ddp{background:var(--amber-soft);border:1px solid var(--line)}
+.ddp b{color:var(--amber)}
+.sum div{border-radius:18px;box-shadow:var(--sh);padding:14px 16px}
+.sum b{color:var(--ac);font-size:1.6rem;line-height:1.2}
+.tabs{background:var(--field);border:1px solid var(--line);padding:4px;border-radius:16px;width:max-content;max-width:100%}
+.tab{border:0;background:transparent;min-height:38px}
+.tab.on{box-shadow:0 4px 12px -5px var(--ac)}
+.chip{background:var(--card)}
+.card{border-radius:22px;box-shadow:var(--sh);padding:18px;gap:14px;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-2px)}
+.card h2{font-size:1.12rem;letter-spacing:-.01em}
+.bar{height:12px}
+.bar i{background:linear-gradient(90deg,#7bd3aa,var(--ac))}
+.pct b{font-size:1.55rem;color:var(--ac)}
+.stats div{border:1px solid var(--line);border-radius:12px}
+.mm{border-radius:14px}
+.empty{background:var(--card);border:1.5px dashed var(--line);border-radius:22px;padding:56px 12px}
+dialog{border-radius:24px;box-shadow:0 28px 70px -24px rgba(0,0,0,.55)}
+#syncbtn{border-radius:99px;background:var(--card)}
+@media(max-width:520px){.wrap{padding:16px 12px 96px}h1{font-size:1.35rem}}
 </style>
 </head>
 <body>
@@ -113,8 +156,10 @@ input{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px soli
   <div class="ddrow" id="ddrow"></div>
   <p class="sub">노트북·스마트폰·갤럭시탭에서 같은 계정으로 이 페이지를 열면 진도가 동기화돼요.</p>
   <div class="sum" id="sum"></div>
+  <div class="tabs" id="tabs"></div>
   <div class="chips" id="chips"></div>
   <div class="grid" id="list"></div>
+  <div class="pager" id="pager"></div>
 </div>
 
 <dialog id="dlg">
@@ -169,7 +214,7 @@ input{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px soli
 <script src="/sync.js"></script>
 <script>
 (function(){
-  var curCat="__all", ddata=[], editDD=null, dref=null, LSD="lecture-tracker-dday-v1", qref=null, LSQ="lecture-tracker-quote-v2", openMemo={}, openRv={}, rvScroll={}, courses=[], editing=null, col=null, LS="lecture-tracker-v1";
+  var PER=4, page=1, tab="active", curCat="__all", ddata=[], editDD=null, dref=null, LSD="lecture-tracker-dday-v1", qref=null, LSQ="lecture-tracker-quote-v2", openMemo={}, openRv={}, rvScroll={}, courses=[], editing=null, col=null, LS="lecture-tracker-v1";
   var $=function(id){return document.getElementById(id)};
   function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
   function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
@@ -214,12 +259,23 @@ input{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px soli
     else ddata=ddata.concat([{id:"d"+Date.now().toString(36)+Math.random().toString(36).slice(2,5),title:t,date:dt}]);
     resetDDForm();showDD();renderDDList();saveDD();
   });
+  function renderPager(pg){
+    $("pager").innerHTML=pg<2?"":'<button type="button" data-p="-1"'+(page<=1?' disabled':'')+'>‹ 이전</button><span>'+page+' / '+pg+'</span><button type="button" data-p="1"'+(page>=pg?' disabled':'')+'>다음 ›</button>';
+  }
+  $("pager").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button[data-p]");if(!b||b.disabled)return;page+=parseInt(b.getAttribute("data-p"),10);render();window.scrollTo({top:0,behavior:"smooth"})});
+  function inTab(c){return (c.done>=c.total)===(tab==="done")}
+  function renderTabs(){
+    var d=0;courses.forEach(function(c){if(c.done>=c.total)d++});
+    if(!courses.length){$("tabs").innerHTML="";tab="active";return}
+    $("tabs").innerHTML='<button type="button" class="tab'+(tab==="active"?' on':'')+'" data-t="active">진행 중 ('+(courses.length-d)+')</button><button type="button" class="tab'+(tab==="done"?' on':'')+'" data-t="done">완강 🎉 ('+d+')</button>';
+  }
+  $("tabs").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button.tab");if(!b)return;tab=b.getAttribute("data-t");curCat="__all";page=1;render()});
   function catOk(c){return curCat==="__all"||(curCat==="__none"?!c.cat:c.cat===curCat)}
   function renderChips(){
     var cats=[],hasNone=false;
-    courses.forEach(function(c){if(c.cat){if(cats.indexOf(c.cat)<0)cats.push(c.cat)}else hasNone=true});
+    courses.filter(inTab).forEach(function(c){if(c.cat){if(cats.indexOf(c.cat)<0)cats.push(c.cat)}else hasNone=true});
     cats.sort();
-    $("cats").innerHTML=cats.map(function(x){return '<option value="'+esc(x)+'">'}).join("");
+    var al=[];courses.forEach(function(c){if(c.cat&&al.indexOf(c.cat)<0)al.push(c.cat)});$("cats").innerHTML=al.sort().map(function(x){return '<option value="'+esc(x)+'">'}).join("");
     if(!cats.length){$("chips").innerHTML="";curCat="__all";return}
     if(curCat!=="__all"&&curCat!=="__none"&&cats.indexOf(curCat)<0)curCat="__all";
     if(curCat==="__none"&&!hasNone)curCat="__all";
@@ -227,7 +283,7 @@ input{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px soli
     if(hasNone)items.push(["__none","미분류"]);
     $("chips").innerHTML=items.map(function(it){return '<button type="button" class="chip'+(it[0]===curCat?' on':'')+'" data-c="'+esc(it[0])+'">'+esc(it[1])+'</button>'}).join("");
   }
-  $("chips").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button.chip");if(!b)return;curCat=b.getAttribute("data-c");render()});
+  $("chips").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("button.chip");if(!b)return;curCat=b.getAttribute("data-c");page=1;render()});
   var RV=[["a","직후 복습"],["b","중간 복습"],["c","마감 복습"],["d","익일 복습"],["e","주말 복습"]];
   function wOf(c){if(c.w)return Object.assign({},c.w);var w={},i;for(i=1;i<=c.done&&i<=c.total;i++)w[i]=1;return w}
   function wCount(w,total){var n=0,i;for(i=1;i<=total;i++)if(w[i])n++;return n}
@@ -276,12 +332,14 @@ input{font:inherit;width:100%;padding:9px 11px;border-radius:9px;border:1px soli
     document.querySelectorAll(".rvs").forEach(function(s){rvScroll[s.getAttribute("data-s")]=s.scrollTop});
     Promise.resolve().then(function(){document.querySelectorAll(".rvs").forEach(function(s){var t=rvScroll[s.getAttribute("data-s")];if(t)s.scrollTop=t})});
     var list=courses.slice().sort(function(a,b){return (a.createdAt||0)-(b.createdAt||0)});
-    renderChips();var tot=0,dn=0,rv=0,fin=0;
+    $("pager").innerHTML="";renderTabs();renderChips();var tot=0,dn=0,rv=0,fin=0;
     list.forEach(function(c){tot+=c.total;dn+=Math.min(c.done,c.total);rv+=rvCount(c);if(c.done>=c.total)fin++});
     $("sum").innerHTML=list.length?
       '<div><b>'+list.length+'</b><span>전체 강의</span></div><div><b>'+fin+'</b><span>완강</span></div><div><b>'+(tot?Math.round(dn/tot*100):0)+'%</b><span>전체 달성률</span></div><div><b>'+list.filter(function(c){return c.done>0&&c.done<c.total}).length+'</b><span>진행 중</span></div>':"";
     if(!list.length){$("list").innerHTML='<div class="empty" style="grid-column:1/-1">아직 등록된 강의가 없어요.<br>“+ 강의 추가”로 첫 강의를 등록해 보세요.</div>';return}
+    list=list.filter(inTab);if(!list.length){$("list").innerHTML='<div class="empty" style="grid-column:1/-1">'+(tab==="done"?'아직 완강한 강의가 없어요.<br>마지막 강까지 수강하면 이 탭으로 옮겨져요.':'진행 중인 강의가 없어요.')+'</div>';return}
     list=list.filter(catOk);if(!list.length){$("list").innerHTML='<div class="empty" style="grid-column:1/-1">이 과목에 해당하는 강의가 없어요.</div>';return}
+    var pg=Math.max(1,Math.ceil(list.length/PER));if(page>pg)page=pg;renderPager(pg);list=list.slice((page-1)*PER,page*PER);
     $("list").innerHTML=list.map(function(c){
       var k=calc(c);
       return '<div class="card" data-id="'+esc(c.id)+'">'+
